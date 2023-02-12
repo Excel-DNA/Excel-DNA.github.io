@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkexcel_dna=self.webpackChunkexcel_dna||[]).push([[3826],{720:e=>{e.exports=JSON.parse('{"permalink":"/Website/blog/page/2","page":2,"postsPerPage":10,"totalPages":3,"totalCount":28,"previousPage":"/Website/blog","nextPage":"/Website/blog/page/3","blogDescription":"Blog","blogTitle":"Blog"}')}}]);
