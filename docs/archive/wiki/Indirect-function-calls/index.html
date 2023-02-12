@@ -6,7 +6,7 @@
 <title data-rh="true">Indirect-function-calls | Excel-DNA</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://excel-dna.github.io/Website/docs/archive/wiki/Indirect-function-calls"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Indirect-function-calls | Excel-DNA"><meta data-rh="true" name="description" content="Weird trick (from comments here//techcommunity.microsoft.com/t5/Excel-Blog/Excel-Dynamic-Array-Improvements/ba-p/332070)"><meta data-rh="true" property="og:description" content="Weird trick (from comments here//techcommunity.microsoft.com/t5/Excel-Blog/Excel-Dynamic-Array-Improvements/ba-p/332070)"><link data-rh="true" rel="icon" href="/Website/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://excel-dna.github.io/Website/docs/archive/wiki/Indirect-function-calls"><link data-rh="true" rel="alternate" href="https://excel-dna.github.io/Website/docs/archive/wiki/Indirect-function-calls" hreflang="en"><link data-rh="true" rel="alternate" href="https://excel-dna.github.io/Website/docs/archive/wiki/Indirect-function-calls" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/Website/blog/rss.xml" title="Excel-DNA RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/Website/blog/atom.xml" title="Excel-DNA Atom Feed"><link rel="stylesheet" href="/Website/assets/css/styles.8e48ba13.css">
 <link rel="preload" href="/Website/assets/js/runtime~main.d30142d9.js" as="script">
-<link rel="preload" href="/Website/assets/js/main.daa29911.js" as="script">
+<link rel="preload" href="/Website/assets/js/main.33bbeb13.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}()</script><div id="__docusaurus">
@@ -14,7 +14,7 @@
 Better to use the following alternative which works in all versions:
 =IF(1,+A1)(B1)</p><hr><p>To be more explicit, we can call a DLL function in the normal way from the sheet by first registering the function using:</p><p>ExecuteExcel4Macro &quot;register(&quot;&quot;msvcrt&quot;&quot;,&quot;&quot;_strrev&quot;&quot;,&quot;&quot;cc&quot;&quot;,&quot;&quot;STRREV&quot;&quot;)&quot;</p><p>and then call it from the sheet with:</p><p>=STRREV(&quot;hello&quot;)</p><p>If we select the &#x27;STRREV&#x27; portion of this formula and press F9 we get the register id of the function (-996147200.) and an &#x27; @&#x27; symbol:</p><p>=(@-996147200)(&quot;hello&quot;)</p><p>We can then try to apply this method to a list of registered functions in the first column, along with arguments in subsequent by filling down a simple formula. </p><p>But if A1 = -996147200 then =(@A1)(&quot;hello&quot;) doesn&#x27;t work and other alternatives seem to crash in current versions. On the other hand: =IF(1,+A1)(B1) does work as expected and could be filled down as required.</p></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages navigation"><a class="pagination-nav__link pagination-nav__link--prev" href="/Website/docs/archive/wiki/Group-Policy-and-Add-Ins"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Group-Policy-and-Add-Ins</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/Website/docs/archive/wiki/Links-about-RefEdit"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Links-about-RefEdit</div></a></nav></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/Website/getting-started/installation">Getting Started</a></li><li class="footer__item"><a class="footer__link-item" href="/Website/guides-basic/tempbasicguide">Guides - Basic</a></li><li class="footer__item"><a class="footer__link-item" href="/Website/guides-advanced/tempadvancedguide">Guides - Advanced</a></li><li class="footer__item">
                   <a href="https://www.youtube.com/user/govertvd" target="_blank" rel="noreferrer noopener" class="footer__link-item"> 
-                  <img src="/TestDocs/img/youtube.png" alt="YouTube" width="20.42" height="14.4" style="margin-right:5px;">govertvd
+                  <img src="/Website/img/youtube.png" alt="YouTube" width="20.42" height="14.4" style="margin-right:5px;">govertvd
                   </a>
               </li></ul></div><div class="col footer__col"><div class="footer__title">Discussions</div><ul class="footer__items clean-list"><li class="footer__item">
                     <a href="https://groups.google.com/g/exceldna" target="_blank" rel="noreferrer noopener" class="footer__link-item"> 
@@ -22,14 +22,14 @@ Better to use the following alternative which works in all versions:
                     </a>
                 </li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/Website/blog">Blog</a></li><li class="footer__item">
                     <a href="https://github.com/Excel-DNA" target="_blank" rel="noreferrer noopener" class="footer__link-item"> 
-                    <img src="/TestDocs/img/github.png" alt="GitHub" width="16" height="16" style="margin-right:5px;">excel-dna
+                    <img src="/Website/img/github.png" alt="GitHub" width="16" height="16" style="margin-right:5px;">excel-dna
                     </a>
                 </li><li class="footer__item">
                     <a href="mailto:govert@dnakode.com" target="_blank" rel="noreferrer noopener" class="footer__link-item"> 
-                    <img src="/TestDocs/img/email.png" alt="GitHub" width="16" height="11" style="margin-right:5px;">govert@dnakode.com
+                    <img src="/Website/img/email.png" alt="GitHub" width="16" height="11" style="margin-right:5px;">govert@dnakode.com
                     </a>
                 </li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2023 DNA Kode, Inc. Built with Docusaurus.</div></div></div></footer></div>
 <script src="/Website/assets/js/runtime~main.d30142d9.js"></script>
-<script src="/Website/assets/js/main.daa29911.js"></script>
+<script src="/Website/assets/js/main.33bbeb13.js"></script>
 </body>
 </html>
