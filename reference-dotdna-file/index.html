@@ -11,7 +11,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2RC1DGT94"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-X2RC1DGT94",{anonymize_ip:!0})</script><link rel="stylesheet" href="/assets/css/styles.8e48ba13.css">
 <link rel="preload" href="/assets/js/runtime~main.a4148f80.js" as="script">
-<link rel="preload" href="/assets/js/main.2ff81fbb.js" as="script">
+<link rel="preload" href="/assets/js/main.cd923edd.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}()</script><div id="__docusaurus">
@@ -21,22 +21,22 @@ When compiling at runtime, the references are resolved as follows:</p><ol><li>If
 Given a path containing a file name, maybe rooted, maybe wi
 th some or no directory info, we attempt to find the file as follows:</p><ol><li>If the file is found at the path, we are done.</li><li>Check the path - if it is rooted replace directory with .dna file&#x27;s directory.</li><li>If the path is not rooted, try the whole path relative to the .dna file location (prepend the .dna file&#x27;s directory).</li><li>Else try 2 or 3 using current AppDomain&#x27;s BaseDirectory.</li></ol><h2 class="anchor anchorWithStickyNavbar_LWe7" id="explicitexports">ExplicitExports<a class="hash-link" href="#explicitexports" title="Direct link to heading">​</a></h2><p>If the <code>ExplicitExports</code> attribute is set to <code>true</code> on a <code>Project</code> or <code>ExternalLibrary</code> node, only functions and methods explicitly marked by an</p><p><code>ExcelFunction</code> or <code>ExcelCommand</code> attribute are exported. Otherwise, all public static methods with compatible signatures are exported.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="autoopenautoclose">AutoOpen/AutoClose<a class="hash-link" href="#autoopenautoclose" title="Direct link to heading">​</a></h2><p>Cleanup is only done when the add-in is removed from the add-in manager.</p><p>When <code>File-&gt;Open</code> is used to reopen the .xll, it is closed and opened, causing the .dna file to be re-read.</p></article></div><div class="col col--2"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#dna-file-schema" class="table-of-contents__link toc-highlight">.dna file schema</a></li><li><a href="#packing" class="table-of-contents__link toc-highlight">Packing</a></li><li><a href="#default-references-and-imports" class="table-of-contents__link toc-highlight">Default references and imports</a></li><li><a href="#image-resolution" class="table-of-contents__link toc-highlight">Image Resolution</a></li><li><a href="#reference-resolution" class="table-of-contents__link toc-highlight">Reference Resolution</a></li><li><a href="#path-resolution" class="table-of-contents__link toc-highlight">Path Resolution</a></li><li><a href="#explicitexports" class="table-of-contents__link toc-highlight">ExplicitExports</a></li><li><a href="#autoopenautoclose" class="table-of-contents__link toc-highlight">AutoOpen/AutoClose</a></li></ul></div></div></div></main></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/getting-started/installation">Getting Started</a></li><li class="footer__item"><a class="footer__link-item" href="/guides-basic/tempbasicguide">Guides - Basic</a></li><li class="footer__item"><a class="footer__link-item" href="/guides-advanced/tempadvancedguide">Guides - Advanced</a></li><li class="footer__item">
                   <a href="https://www.youtube.com/user/govertvd" target="_blank" rel="noreferrer noopener" class="footer__link-item"> 
-                  <img src="/Website/img/youtube.png" alt="YouTube" width="20.42" height="14.4" style="margin-right:5px;">govertvd
+                  <img src="/img/youtube.png" alt="YouTube" width="20.42" height="14.4" style="margin-right:5px;">govertvd
                   </a>
               </li></ul></div><div class="col footer__col"><div class="footer__title">Discussions</div><ul class="footer__items clean-list"><li class="footer__item">
                     <a href="https://groups.google.com/g/exceldna" target="_blank" rel="noreferrer noopener" class="footer__link-item"> 
-                    <img src="/Website/img/google_groups.png" alt="Google Groups" width="16" height="16" style="margin-right:5px;">exceldna
+                    <img src="/img/google_groups.png" alt="Google Groups" width="16" height="16" style="margin-right:5px;">exceldna
                     </a>
                 </li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/blog">Blog</a></li><li class="footer__item">
                     <a href="https://github.com/Excel-DNA" target="_blank" rel="noreferrer noopener" class="footer__link-item"> 
-                    <img src="/Website/img/github.png" alt="GitHub" width="16" height="16" style="margin-right:5px;">excel-dna
+                    <img src="/img/github.png" alt="GitHub" width="16" height="16" style="margin-right:5px;">excel-dna
                     </a>
                 </li><li class="footer__item">
                     <a href="mailto:govert@dnakode.com" target="_blank" rel="noreferrer noopener" class="footer__link-item"> 
-                    <img src="/Website/img/email.png" alt="GitHub" width="16" height="11" style="margin-right:5px;">govert@dnakode.com
+                    <img src="/img/email.png" alt="GitHub" width="16" height="11" style="margin-right:5px;">govert@dnakode.com
                     </a>
                 </li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2023 DNA Kode, Inc. Built with Docusaurus.</div></div></div></footer></div>
 <script src="/assets/js/runtime~main.a4148f80.js"></script>
-<script src="/assets/js/main.2ff81fbb.js"></script>
+<script src="/assets/js/main.cd923edd.js"></script>
 </body>
 </html>
