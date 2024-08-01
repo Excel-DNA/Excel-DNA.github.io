@@ -163,25 +163,6 @@ public static string ParamsJoinString(string separator, params string[] values)
 | A2    | =ParamsFunc2(\"a\",,\"c\",\"d\",,\"f\")     | a,,c, [3: d,ExcelDna.Integration.ExcelMissing,f]
 | A3    | =ParamsJoinString(\"//\",\"5\",\"4\",\"3\") | 5//4//3
 
-## Array formula
-
-```csharp
-[ExcelMapArrayFunction]
-public static IEnumerable<string> MapArray(IEnumerable<DateTimeKind> a)
-{
-    return a.Select(i => "Array element VAL: " + i.ToString());
-}
-```
-
-| Cell  | Formula            | Result 
-| ----- | ------------------ | ------ 
-| A1    | Utc                |  
-| A2    | Local              | 
-| A3    | Unspecified        | 
-| B1    | {=MapArray(A1:A3)} | Array element VAL: Utc
-| B2    | {=MapArray(A1:A3)} | Array element VAL: Local
-| B3    | {=MapArray(A1:A3)} | Array element VAL: Unspecified
-
 ## Async functions and tasks
 
 ```csharp
@@ -227,15 +208,15 @@ public class Calc
 }
 
 [ExcelFunction]
-public static ExcelObjectHandle<Calc> CreateCalc(double d1, double d2)
+public static Calc CreateCalc(double d1, double d2)
 {
-    return new(new Calc(d1, d2));
+    return new Calc(d1, d2);
 }
 
 [ExcelFunction]
-public static double CalcSum(ExcelObjectHandle<Calc> h)
+public static double CalcSum(Calc c)
 {
-    return h.Object.Sum();
+    return c.Sum();
 }
 ```
 
@@ -249,15 +230,15 @@ Thread safe creation and use is supported:
 
 ```csharp
 [ExcelFunction(IsThreadSafe = true)]
-public static ExcelObjectHandle<int> CreateObjectTS(int i)
+public static Calc CreateCalcTS(double d1, double d2)
 {
-    return new(i);
+    return new Calc(d1, d2);
 }
 
 [ExcelFunction(IsThreadSafe = true)]
-public static int UseObjectTS(ExcelObjectHandle<int> h)
+public static double CalcSumTS(Calc c)
 {
-    return h.Object;
+    return c.Sum();
 }
 ```
 
@@ -295,9 +276,9 @@ public class DisposableObject : IDisposable
 }
 
 [ExcelFunction]
-public static ExcelObjectHandle<DisposableObject> CreateDisposableObject(int x)
+public static DisposableObject CreateDisposableObject(int x)
 {
-    return new(new DisposableObject());
+    return new DisposableObject();
 }
 ```
 
@@ -381,7 +362,7 @@ Subsequent multiple conversions for the same type (like `TestType1 Order3ToTestT
 
 ## Function execution handler
 
-Monitor Excel functions execution with a custom handler:
+Monitor Excel functions execution with a custom handler, marked with `ExcelFunctionExecutionHandlerSelector` attribute:
 
 ```csharp
 internal class FunctionLoggingHandler : FunctionExecutionHandler
@@ -430,4 +411,42 @@ internal class FunctionLoggingHandler : FunctionExecutionHandler
         return new FunctionLoggingHandler();
     }
 }
+```
+
+The default return value for async functions that are in process is #N/A. You can, for example, return the newer #GETTING_DATA error code creating the following function execution handler:
+
+```csharp
+internal class AsyncReturnHandler : FunctionExecutionHandler
+{
+    public override void OnSuccess(FunctionExecutionArgs args)
+    {
+        if (args.ReturnValue.Equals(ExcelError.ExcelErrorNA))
+            args.ReturnValue = ExcelError.ExcelErrorGettingData;
+    }
+
+    [ExcelFunctionExecutionHandlerSelector]
+    public static IFunctionExecutionHandler AsyncReturnHandlerSelector(IExcelFunctionInfo functionInfo)
+    {
+        return new AsyncReturnHandler();
+    }
+}
+```
+
+## Function registration processing
+
+You can implement custom function wrappers during registration using `ExcelFunctionProcessor` attribute:
+
+```csharp
+public interface IExcelFunctionInfo
+{
+    ExcelFunctionAttribute FunctionAttribute { get; }
+    List<IExcelFunctionParameter> Parameters { get; }
+    IExcelFunctionReturn Return { get; }
+    List<object> CustomAttributes { get; }
+
+    LambdaExpression FunctionLambda { get; set; }
+}
+
+[ExcelFunctionProcessor]
+public static IEnumerable<IExcelFunctionInfo> ProcessFunctions(IEnumerable<IExcelFunctionInfo> registrations, IExcelFunctionRegistrationConfiguration config)
 ```
