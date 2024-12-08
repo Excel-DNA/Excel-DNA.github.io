@@ -61,7 +61,7 @@ The easiest way to make an Excel-DNA addin is to create to follow these simple s
 
     ```fsharp
     module MyFunctions = 
-        open Excel.Integration
+        open ExcelDna.Integration
    
         [<ExcelFunction(Description = "My first .NET function")>]
         let SayHello name = "Hello " + name
