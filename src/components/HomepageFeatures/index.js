@@ -145,7 +145,7 @@ export default function HomepageFeatures() {
                         <pre tabindex="0" class="thin-scrollbar">
                           <code class="codeBlockLines_node_modules-@docusaurus-theme-classic-lib-theme-CodeBlock-Content-styles-module">
                             <span class="token-line" style={{color: `rgb(57, 58, 52)`}}></span>
-                            <span class="token keyword">module&nbsp;MyFunctions&nbsp;=&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;open&nbsp;Excel.Integration<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;[&lt;ExcelFunction(Description&nbsp;=&nbsp;"My&nbsp;first&nbsp;.NET&nbsp;function")&gt;]<br />&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;SayHello&nbsp;name&nbsp;=&nbsp;"Hello&nbsp;"&nbsp;+&nbsp;name</span>
+                            <span class="token keyword">module&nbsp;MyFunctions&nbsp;=&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;open&nbsp;ExcelDna.Integration<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;[&lt;ExcelFunction(Description&nbsp;=&nbsp;"My&nbsp;first&nbsp;.NET&nbsp;function")&gt;]<br />&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;SayHello&nbsp;name&nbsp;=&nbsp;"Hello&nbsp;"&nbsp;+&nbsp;name</span>
                           </code>
                         </pre>
                       </div>
