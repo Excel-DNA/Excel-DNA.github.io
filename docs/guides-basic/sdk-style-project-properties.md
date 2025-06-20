@@ -133,6 +133,10 @@ As part of the build, if no .dna file is present in the project, the required .d
     <!-- Default value: $(TargetFileName) -->
     <ExcelAddInExternalLibraryPath></ExcelAddInExternalLibraryPath>
 
+    <!-- Enable/disable including pdb files in packed add-in. -->
+    <!-- Default value: false -->
+    <ExcelAddInIncludePdb></ExcelAddInIncludePdb>
+
     <!-- Enable/disable collectible AssemblyLoadContext for .NET 6. -->
     <!-- Default value: false -->
     <ExcelAddInDisableAssemblyContextUnload></ExcelAddInDisableAssemblyContextUnload>
