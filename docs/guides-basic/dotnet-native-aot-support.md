@@ -29,7 +29,7 @@ Publishing the following **MyAddin.csproj** C# project produces native 64-bit **
 
 Currently supported functionality in native add-ins:
 
-## Functions
+## Function
 
 ```csharp
 internal class Functions
@@ -53,3 +53,40 @@ internal class Functions
 | A1    | =NativeHello("AOT")  | Hello AOT!       
 | A2    | =NativeSum(2, 3)     | 5
   
+## Async function
+
+```csharp
+[ExcelAsyncFunction]
+public static async Task<string> NativeAsyncTaskHello(string name, int msDelay)
+{
+    await Task.Delay(msDelay);
+    return $"Hello native async task {name}";
+}
+```
+
+| Cell  | Formula                             | Immediate Result | Final Result 
+| ----- | ----------------------------------- | ---------------- | -------------------------
+| A1    | =NativeAsyncTaskHello("Test", 5000) | #N/A             | Hello native async task Test
+      
+## AddIn 
+
+```csharp
+public class AddIn : IExcelAddIn
+{
+    public void AutoOpen()
+    {
+        var thisAddInName = Path.GetFileName((string)XlCall.Excel(XlCall.xlGetName));
+        var message = string.Format("Excel-DNA Native AOT Add-In '{0}' loaded!", thisAddInName);
+
+        MessageBox.Show(message, thisAddInName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+    }
+
+    public void AutoClose()
+    {
+    }
+}
+```
+
+![AutoOpen](./assets/native-aot-auto-open.png)
+
+## DynamicApplication
