@@ -137,6 +137,10 @@ As part of the build, if no .dna file is present in the project, the required .d
     <!-- Default value: false -->
     <ExcelAddInIncludePdb></ExcelAddInIncludePdb>
 
+    <!-- Control whether the add-in's assemblies are loaded directly from byte arrays under .NET Framework. -->
+    <!-- Default value: true -->
+    <ExcelAddInLoadFromBytes></ExcelAddInLoadFromBytes>
+
     <!-- Enable/disable collectible AssemblyLoadContext for .NET 6. -->
     <!-- Default value: false -->
     <ExcelAddInDisableAssemblyContextUnload></ExcelAddInDisableAssemblyContextUnload>
