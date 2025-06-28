@@ -206,3 +206,14 @@ public static string NativeApplicationAddCellComment(string cell, string comment
 | A4    | =NativeApplicationAlignCellRight("C1")                | -4152
 | A5    | =NativeApplicationAddCellComment("C1", "My comment.") | My comment.
 
+```csharp
+[ExcelCommand(MenuName = "Test", MenuText = "Range Set")]
+public static void RangeSet()
+{
+    IDynamic xlApp = ExcelDnaUtil.DynamicApplication;
+
+    xlApp.Get<IDynamic>("Range", ["F1"]).Set("Value", "Testing 1... 2... 3... 4");
+}
+```
+
+![](./assets/native-aot-dynamic-application-range-set.png)
