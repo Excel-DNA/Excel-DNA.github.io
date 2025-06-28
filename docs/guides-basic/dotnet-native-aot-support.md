@@ -235,3 +235,32 @@ double v2)
 ```
 
 ![](./assets/native-aot-intellisense-fx.png)
+
+## Accepting range parameters in UDFs
+
+```csharp
+[ExcelFunction]
+public static object NativeRangeConcat2(object[,] values)
+{
+    string result = "";
+    int rows = values.GetLength(0);
+    int cols = values.GetLength(1);
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            object value = values[i, j];
+            result += value.ToString();
+        }
+    }
+    return result;
+}
+```
+
+| Cell  | Formula                    | Result 
+| ----- | -------------------------- | ------ 
+| A1    | str                        |  
+| A2    | 1                          | 
+| B1    | TRUE                       | 
+| B2    | 3.5                        | 
+| C1    | =NativeRangeConcat2(A1:B2) | strTrue13.5
