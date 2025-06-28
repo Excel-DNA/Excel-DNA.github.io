@@ -220,7 +220,7 @@ public static void RangeSet()
 
 ## IntelliSense
 
-It is possible to get limited information regarding the UDF. The information can be seen by writing the name of the function in Excel's Forumla Bar and clicking on the fx button.
+It is possible to get limited information regarding the UDF. The information can be seen by writing the name of the function in Excel's Forumla Bar and clicking on the ```fx``` button.
 
 ```csharp
 [ExcelFunction(Description = "A useful test function that adds two numbers, and returns the sum.")]
