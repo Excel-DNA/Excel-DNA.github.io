@@ -217,3 +217,21 @@ public static void RangeSet()
 ```
 
 ![](./assets/native-aot-dynamic-application-range-set.png)
+
+## IntelliSense
+
+It is possible to get limited information regarding the UDF. The information can be seen by writing the name of the function in Excel's Forumla Bar and clicking on the fx button.
+
+```csharp
+[ExcelFunction(Description = "A useful test function that adds two numbers, and returns the sum.")]
+public static double AddThem(
+[ExcelArgument(Name = "Augend", Description = "is the first number, to which will be added")]
+double v1,
+[ExcelArgument(Name = "Addend", Description = "is the second number that will be added")]
+double v2)
+{
+    return v1 + v2;
+}
+```
+
+![](./assets/native-aot-intellisense-fx.png)
