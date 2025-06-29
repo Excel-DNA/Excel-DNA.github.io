@@ -297,6 +297,22 @@ public static string NativeOptionalDouble(double d = 1.23)
 | A1    | =NativeOptionalDouble(2.3) | Native Optional VAL: 2.3       
 | A2    | =NativeOptionalDouble()    | Native Optional VAL: 1.23
 
+## Range parameter
+
+```csharp
+[ExcelFunction]
+public static string NativeRangeAddress(IRange r)
+{
+    return "Native Address: " + r.Get<string>("Address");
+}
+```
+
+| Cell  | Formula                         | Result 
+| ----- | ------------------------------- | ------ 
+| A1    | =NativeRangeAddress(B2)         | Native Address: $B$2       
+| A2    | =NativeRangeAddress(B2:C4)      | Native Address: $B$2:$C$4 
+| A3    | =NativeRangeAddress((B2,D5:E6)) | Native Address: $B$2,$D$5:$E$6  
+
 # Not supported functionality in native add-ins
 
 Loading images for ribbon controls.
