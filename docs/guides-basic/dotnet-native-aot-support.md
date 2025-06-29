@@ -282,6 +282,21 @@ public static string NativeNullableDouble(double? d)
 | A1    | =NativeNullableDouble(1.2) | Native Nullable VAL: 1.2       
 | A2    | =NativeNullableDouble()    | Native Nullable VAL: NULL     
 
+## Optional parameter
+
+```csharp
+[ExcelFunction]
+public static string NativeOptionalDouble(double d = 1.23)
+{
+    return "Native Optional VAL: " + d.ToString();
+}
+```
+
+| Cell  | Formula                    | Result 
+| ----- | -------------------------- | ------ 
+| A1    | =NativeOptionalDouble(2.3) | Native Optional VAL: 2.3       
+| A2    | =NativeOptionalDouble()    | Native Optional VAL: 1.23
+
 # Not supported functionality in native add-ins
 
 Loading images for ribbon controls.
