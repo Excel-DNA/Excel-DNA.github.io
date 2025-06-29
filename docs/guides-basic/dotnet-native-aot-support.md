@@ -27,7 +27,7 @@ Publishing the following **MyAddin.csproj** C# project produces native 64-bit **
 </Project>
 ```
 
-Currently supported functionality in native add-ins:
+# Supported functionality in native add-ins
 
 ## Function
 
@@ -264,3 +264,26 @@ public static object NativeRangeConcat2(object[,] values)
 | B1    | TRUE                       | 
 | B2    | 3.5                        | 
 | C1    | =NativeRangeConcat2(A1:B2) | strTrue13.5
+
+## Extended Registration
+
+### Nullable parameter
+
+```csharp
+[ExcelFunction]
+public static string NativeNullableDouble(double? d)
+{
+    return "Native Nullable VAL: " + (d.HasValue ? d : "NULL");
+}
+```
+
+| Cell  | Formula                    | Result 
+| ----- | -------------------------- | ------ 
+| A1    | =NativeNullableDouble(1.2) | Native Nullable VAL: 1.2       
+| A2    | =NativeNullableDouble()    | Native Nullable VAL: NULL     
+
+# Not supported functionality in native add-ins
+
+Loading images for ribbon controls.
+
+Copy to clipboard in Diagnostic Display.
