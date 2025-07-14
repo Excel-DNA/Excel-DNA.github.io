@@ -1,6 +1,6 @@
 # Excel-DNA Release Notes - v1.9.0
 
-**Released:** _Soon..._ [v1.9.0-rc2 is now available on NuGet](https://www.nuget.org/packages/ExcelDna.AddIn).
+**Released:** _Soon..._ [v1.9.0-rc3 is now available on NuGet](https://www.nuget.org/packages/ExcelDna.AddIn).
 
 This document provides an overview of the new features and enhancements in Excel-DNA version 1.9.0. This release significantly refactors and extends function registration, including simplified support for optional / default parameters and asynchronous functions, and introduces built-in support for object handles.
 
@@ -44,7 +44,7 @@ In v1.9, the functionality previously exposed in the separate `ExcelDna.Registra
 Key changes include:
 * **Expanded Default Support:** A significantly broader range of parameter and return types are now supported directly for methods marked with `[ExcelFunction]`.
 * **Integrated Async & Object Handles:** Support for asynchronous (`Task<T>`) and streaming (`IObservable<T>`) functions, along with object handles (`[ExcelHandle]`, `[return: ExcelHandle]`), is now built-in.
-* **Migrated Extension Points:** Customization hooks like `P` `FunctionExecutionHandler` are now part of the main library, generally found within the `ExcelDna.Registration` namespace.
+* **Migrated Extension Points:** Customization hooks like `FunctionExecutionHandler` are now part of the main library, generally found within the `ExcelDna.Registration` namespace.
 * **Deprecation of `Excel.Registration` Package:** The `ExcelDna.Registration.*` packages are no longer required, and have been marked as deprecated.
 
 ### Function Registration in v1.9
@@ -120,11 +120,11 @@ In order to customize the async or streaming functions beyond the default wrappe
     
     * `ExcelAsyncUtil.RunTask`: Helper for running `Task`-based operations and integrating them with Excel's async model.
         ```csharp
-        // Example usage of ExcelAsyncUtil.RunTask (from fragment, slightly adapted)
-        // public static object RunMyTask<TResult>(string callerFunctionName, object callerParameters, Func<Task<TResult>> taskSource)
-        // {
-        //     return ExcelDna.Integration.ExcelAsyncUtil.RunTask(callerFunctionName, callerParameters, taskSource);
-        // }
+        // Example usage of ExcelAsyncUtil.RunTask
+        public static object RunMyTask<TResult>(string callerFunctionName, object callerParameters, Func<Task<TResult>> taskSource)
+        {
+            return ExcelDna.Integration.ExcelAsyncUtil.RunTask(callerFunctionName, callerParameters, taskSource);
+        }
         ```
     * `ExcelDna.Integration.AsyncTaskUtil`: Utility class for managing `Task`-based functions.
     * `ExcelDna.Integration.NativeAsyncTaskUtil`: For deeper integration with native async capabilities.
@@ -149,7 +149,7 @@ In order to customize the async or streaming functions beyond the default wrappe
 
 #### Registration Customization
 
-Explicit registration by retrieving and processing the `ExcelFunction` list was previously done by extensions in the `ExcelDna.Registration` library. The relevant types from that library are now included in the `ExcelDna.Integration` assembly, but the namespaces and type names are not changes. Thus code previously doing explicit registration should still work after the update. (The `ExcelDna.Registration` NuGet package just becomes obsolete.)
+Explicit registration by retrieving and processing the `ExcelFunction` list was previously done by extensions in the `ExcelDna.Registration` library. The relevant types from that library are now included in the `ExcelDna.Integration` assembly, but the namespaces and type names are not changed. Thus code previously doing explicit registration should still work after the update. (The `ExcelDna.Registration` NuGet package just becomes obsolete.)
 
 We also provide a simpler approach for including registration extensions in an add-in.
 
@@ -369,7 +369,7 @@ The `[ExcelHandle]` attribute provides a robust mechanism for managing .NET obje
 * **Assembly-Level `ExcelHandleExternal` Attribute:** For types defined in other assemblies that you want Excel-DNA to treat as handles, you can use the `[assembly: ExcelHandleExternal(typeof(YourExternalType))]` attribute.
     ```csharp
     // In AssemblyInfo.cs or a similar file:
-    // [assembly: ExcelDna.Integration.ExcelHandleExternal(typeof(MyCompany.SharedLibrary.SomeDataType))]
+    [assembly: ExcelDna.Integration.ExcelHandleExternal(typeof(MyCompany.SharedLibrary.SomeDataType))]
     ```
 
 
@@ -386,9 +386,12 @@ The affected methods are:
 * `OnUpdateNotifyInvokedInsideLock`
 * `OnRefreshDataProcessedInsideLock`
 
-The sample project RtdClock-Watchdog (in the Excel-DNA\Samples repository) shows how these methods can be used to ass a watchdog to an RTD server that monitors whether the RTD data is being fetched timeously.
+The sample project RtdClock-Watchdog (in the Excel-DNA\Samples repository) shows how these methods can be used to add a watchdog to an RTD server that monitors whether the RTD data is being fetched timeously.
 
 ## Other Changes and Enhancements
+
+### Support for newer .NET Versions
+* With this release we extend support to .NET 9 (and preliminary support for .NET 10)
 
 ### Help File Packaging
 * Added support for packing compiled HTML Help (`.chm`) files into the packed add-in (`.xll`).
