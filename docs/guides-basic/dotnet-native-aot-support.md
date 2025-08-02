@@ -354,6 +354,37 @@ public static string NativeStringArray(string[] s)
 | A3    | World                     | 
 | B1    | =NativeStringArray(A1:A3) | Native StringArray VALS: 12.3World
 
+## String array 2D parameter
+
+```csharp
+[ExcelFunction]
+public static string NativeStringArray2D(string[,] s)
+{
+    string result = "";
+    for (int i = 0; i < s.GetLength(0); i++)
+    {
+        for (int j = 0; j < s.GetLength(1); j++)
+        {
+            result += s[i, j];
+        }
+
+        result += " ";
+    }
+
+    return $"Native StringArray2D VALS: {result}";
+}
+```
+
+| Cell  | Formula                     | Result 
+| ----- | ----------------------------| ------ 
+| A1    | 01                          | 
+| A2    | 2.30                        | 
+| A3    | Hello                       | 
+| B1    | 5                           | 
+| B2    | 6.7                         | 
+| B3    | World                       | 
+| C1    | =NativeStringArray2D(A1:B3) | Native StringArray2D VALS: 15 2.36.7 HelloWorld
+
 # Not supported functionality in native add-ins
 
 Loading images for ribbon controls.
