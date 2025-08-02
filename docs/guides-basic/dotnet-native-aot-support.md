@@ -313,6 +313,30 @@ public static string NativeRangeAddress(IRange r)
 | A2    | =NativeRangeAddress(B2:C4)      | Native Address: $B$2:$C$4 
 | A3    | =NativeRangeAddress((B2,D5:E6)) | Native Address: $B$2,$D$5:$E$6  
 
+## Enums parameter and return value
+
+```csharp
+[ExcelFunction]
+public static string NativeEnum(DateTimeKind e)
+{
+    return "Native Enum VAL: " + e.ToString();
+}
+
+[ExcelFunction]
+public static DateTimeKind NativeEnumReturn(string s)
+{
+    return Enum.Parse<DateTimeKind>(s);
+}
+```
+
+| Cell  | Formula                          | Result 
+| ----- | -------------------------------- | ------ 
+| A1    | =NativeEnum("Unspecified")       | Native Enum VAL: Unspecified      
+| A2    | =NativeEnum("Local")             | Native Enum VAL: Local
+| A3    | =NativeEnum(1)                   | Native Enum VAL: Utc  
+| A4    | =NativeEnumReturn("Unspecified") | Unspecified 
+| A5    | =NativeEnumReturn("Local")       | Local 
+
 # Not supported functionality in native add-ins
 
 Loading images for ribbon controls.
