@@ -337,6 +337,23 @@ public static DateTimeKind NativeEnumReturn(string s)
 | A4    | =NativeEnumReturn("Unspecified") | Unspecified 
 | A5    | =NativeEnumReturn("Local")       | Local 
 
+## String array parameter
+
+```csharp
+[ExcelFunction]
+public static string NativeStringArray(string[] s)
+{
+    return "Native StringArray VALS: " + string.Concat(s);
+}
+```
+
+| Cell  | Formula                   | Result 
+| ----- | --------------------------| ------ 
+| A1    | 01                        | 
+| A2    | 2.30                      | 
+| A3    | World                     | 
+| B1    | =NativeStringArray(A1:A3) | Native StringArray VALS: 12.3World
+
 # Not supported functionality in native add-ins
 
 Loading images for ribbon controls.
