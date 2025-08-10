@@ -385,6 +385,49 @@ public static string NativeStringArray2D(string[,] s)
 | B3    | World                       | 
 | C1    | =NativeStringArray2D(A1:B3) | Native StringArray2D VALS: 15 2.36.7 HelloWorld
 
+## params parameter (up to 16 arguments)
+
+```csharp
+[ExcelFunction]
+public static string NativeParamsFunc1(
+    [ExcelArgument(Name = "first.Input", Description = "is a useful start")]
+    object input,
+    [ExcelArgument(Description = "is another param start")]
+    string QtherInpEt,
+    [ExcelArgument(Name = "Value", Description = "gives the Rest")]
+    params object[] args)
+{
+    return input + "," + QtherInpEt + ", : " + args.Length;
+}
+
+[ExcelFunction]
+public static string NativeParamsFunc2(
+    [ExcelArgument(Name = "first.Input", Description = "is a useful start")]
+    object input,
+    [ExcelArgument(Name = "second.Input", Description = "is some more stuff")]
+    string input2,
+    [ExcelArgument(Description = "is another param ")]
+    string QtherInpEt,
+    [ExcelArgument(Name = "Value", Description = "gives the Rest")]
+    params object[] args)
+{
+    var content = string.Join(",", args.Select(ValueType => ValueType.ToString()));
+    return input + "," + input2 + "," + QtherInpEt + ", " + $"[{args.Length}: {content}]";
+}
+
+[ExcelFunction]
+public static string NativeParamsJoinString(string separator, params string[] values)
+{
+    return String.Join(separator, values);
+}
+```
+
+| Cell  | Formula                                   | Result 
+| ----- | ------------------------------------------| ------ 
+| A1    | =NativeParamsFunc1(1,"2",4,5)             | 1,2, : 2
+| A2    | =NativeParamsFunc2("a",,"c","d",,"f")     | a,,c, [3: d,ExcelDna.Integration.ExcelMissing,f]
+| A3    | =NativeParamsJoinString("//","5","4","3") | 5//4//3
+
 # Not supported functionality in native add-ins
 
 Loading images for ribbon controls.
