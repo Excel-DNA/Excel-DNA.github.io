@@ -62,11 +62,19 @@ public static async Task<string> NativeAsyncTaskHello(string name, int msDelay)
     await Task.Delay(msDelay);
     return $"Hello native async task {name}";
 }
+
+[ExcelAsyncFunction]
+public static string NativeAsyncHello(string name, int msToSleep)
+{
+    Thread.Sleep(msToSleep);
+    return $"Hello native async {name}";
+}
 ```
 
 | Cell  | Formula                             | Immediate Result | Final Result 
 | ----- | ----------------------------------- | ---------------- | -------------------------
 | A1    | =NativeAsyncTaskHello("Test", 5000) | #N/A             | Hello native async task Test
+| B1    | =NativeAsyncHello("Test", 5000)     | #N/A             | Hello native async Test
       
 ## AddIn 
 
