@@ -443,6 +443,46 @@ public static string NativeParamsJoinString(string separator, params string[] va
 | A2    | =NativeParamsFunc2("a",,"c","d",,"f")     | a,,c, [3: d,ExcelDna.Integration.ExcelMissing,f]
 | A3    | =NativeParamsJoinString("//","5","4","3") | 5//4//3
 
+# Object handles
+
+Create and reuse .NET objects:
+
+```csharp
+public class Calc
+{
+    private double d1, d2;
+
+    public Calc(double d1, double d2)
+    {
+        this.d1 = d1;
+        this.d2 = d2;
+    }
+
+    public double Sum()
+    {
+        return d1 + d2;
+    }
+}
+
+[ExcelFunction]
+[return: ExcelHandle]
+public static Calc NativeCreateCalc(double d1, double d2)
+{
+    return new Calc(d1, d2);
+}
+
+[ExcelFunction]
+public static double NativeCalcSum([ExcelHandle] Calc c)
+{
+    return c.Sum();
+}
+```
+
+| Cell  | Formula                     | Result 
+| ----- | ----------------------------| ------ 
+| A1    | =NativeCreateCalc(1.2, 3.4) | NativeCreateCalc:1
+| A2    | =NativeCalcSum(A1)          | 4.6
+
 # Not supported functionality in native add-ins
 
 Loading images for ribbon controls.
