@@ -519,6 +519,27 @@ public static double NativeCalcExcelHandleMul(CalcExcelHandle c)
 | A1    | =NativeCreateCalcExcelHandle(1.4, 0.5) | NativeCreateCalcExcelHandle:1
 | A2    | =NativeCalcExcelHandleMul(A1)          | 0.7
 
+```csharp
+[assembly: ExcelHandleExternal(typeof(System.Reflection.Assembly))]
+
+[ExcelFunction]
+public static System.Reflection.Assembly NativeGetExecutingAssembly()
+{
+    return System.Reflection.Assembly.GetExecutingAssembly();
+}
+
+[ExcelFunction]
+public static string? NativeGetAssemblyName(System.Reflection.Assembly assembly)
+{
+    return assembly.GetName().Name;
+}
+```
+
+| Cell  | Formula                       | Result 
+| ----- | ------------------------------| ------ 
+| A1    | =NativeGetExecutingAssembly() | NativeGetExecutingAssembly:1
+| A2    | =NativeGetAssemblyName(A1)    | ExcelDna.AddIn.RuntimeTestsAOT64
+
 # Not supported functionality in native add-ins
 
 Loading images for ribbon controls.
