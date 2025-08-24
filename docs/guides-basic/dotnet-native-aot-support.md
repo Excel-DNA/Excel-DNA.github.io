@@ -53,7 +53,7 @@ internal class Functions
 | A1    | =NativeHello("AOT")  | Hello AOT!       
 | A2    | =NativeSum(2, 3)     | 5
   
-## Async function
+## Async functions and tasks
 
 ```csharp
 [ExcelAsyncFunction]
@@ -69,12 +69,19 @@ public static string NativeAsyncHello(string name, int msToSleep)
     Thread.Sleep(msToSleep);
     return $"Hello native async {name}";
 }
+
+[ExcelFunction]
+public static Task<string> NativeTaskHello(string name)
+{
+    return Task.FromResult($"Hello native task {name}");
+}
 ```
 
-| Cell  | Formula                             | Immediate Result | Final Result 
-| ----- | ----------------------------------- | ---------------- | -------------------------
-| A1    | =NativeAsyncTaskHello("Test", 5000) | #N/A             | Hello native async task Test
-| B1    | =NativeAsyncHello("Test", 5000)     | #N/A             | Hello native async Test
+| Cell  | Formula                             | Immediate Result       | Final Result 
+| ----- | ----------------------------------- | ---------------------- | -------------------------
+| A1    | =NativeAsyncTaskHello("Test", 5000) | #N/A                   | Hello native async task Test
+| B1    | =NativeAsyncHello("Test", 5000)     | #N/A                   | Hello native async Test
+| C1    | =NativeTaskHello("Test")            | Hello native task Test | Hello native task Test
       
 ## AddIn 
 
