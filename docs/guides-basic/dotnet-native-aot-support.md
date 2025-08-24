@@ -483,6 +483,42 @@ public static double NativeCalcSum([ExcelHandle] Calc c)
 | A1    | =NativeCreateCalc(1.2, 3.4) | NativeCreateCalc:1
 | A2    | =NativeCalcSum(A1)          | 4.6
 
+```csharp
+[ExcelHandle]
+public class CalcExcelHandle
+{
+    private double d1, d2;
+
+    public CalcExcelHandle(double d1, double d2)
+    {
+        this.d1 = d1;
+        this.d2 = d2;
+    }
+
+    public double Mul()
+    {
+        return d1 * d2;
+    }
+}
+
+[ExcelFunction]
+public static CalcExcelHandle NativeCreateCalcExcelHandle(double d1, double d2)
+{
+    return new CalcExcelHandle(d1, d2);
+}
+
+[ExcelFunction]
+public static double NativeCalcExcelHandleMul(CalcExcelHandle c)
+{
+    return c.Mul();
+}
+```
+
+| Cell  | Formula                                | Result 
+| ----- | ---------------------------------------| ------ 
+| A1    | =NativeCreateCalcExcelHandle(1.4, 0.5) | NativeCreateCalcExcelHandle:1
+| A2    | =NativeCalcExcelHandleMul(A1)          | 0.7
+
 # Not supported functionality in native add-ins
 
 Loading images for ribbon controls.
