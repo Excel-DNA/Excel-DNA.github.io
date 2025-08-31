@@ -586,6 +586,29 @@ public static TestType1 NativeReturnTestType1(string s)
 | A1    | =NativeVersion2("4.3.2.1")        | The Native Version value with field count 2 is 4.3
 | A2    | =NativeReturnTestType1("world")   | The Native TestType1 return value is world
 
+# Function execution handler
+
+```csharp
+public class FunctionLoggingHandler : FunctionExecutionHandler
+{
+    public override void OnSuccess(FunctionExecutionArgs args)
+    {
+        System.Diagnostics.Trace.WriteLine($"OnSuccess - Result: {args.ReturnValue}");
+    }
+
+    [ExcelFunctionExecutionHandlerSelector]
+    public static IFunctionExecutionHandler LoggingHandlerSelector(IExcelFunctionInfo functionInfo)
+    {
+        return new FunctionLoggingHandler();
+    }
+}
+```
+
+| Cell      | Formula               | Result 
+| --------- | ----------------------| ------ 
+| A1        | =NativeHello("world") | Hello world!
+| DebugView |                       | OnSuccess - Result: Hello world! 
+
 # Not supported functionality in native add-ins
 
 Loading images for ribbon controls.
