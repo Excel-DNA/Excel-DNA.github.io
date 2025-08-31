@@ -540,6 +540,52 @@ public static string? NativeGetAssemblyName(System.Reflection.Assembly assembly)
 | A1    | =NativeGetExecutingAssembly() | NativeGetExecutingAssembly:1
 | A2    | =NativeGetAssemblyName(A1)    | ExcelDna.AddIn.RuntimeTestsAOT64
 
+# User defined parameter and return value conversions
+
+```csharp
+public class TestType1
+{
+    public string Value;
+
+    public TestType1(string value)
+    {
+        Value = value;
+    }
+}
+
+public class Conversions
+{
+    [ExcelParameterConversion]
+    public static Version ToVersion(string s)
+    {
+        return new Version(s);
+    }
+
+    [ExcelReturnConversion]
+    public static string FromTestType1(TestType1 value)
+    {
+        return value.Value;
+    }
+}
+
+[ExcelFunction]
+public static string NativeVersion2(Version v)
+{
+    return "The Native Version value with field count 2 is " + v.ToString(2);
+}
+
+[ExcelFunction]
+public static TestType1 NativeReturnTestType1(string s)
+{
+    return new TestType1("The Native TestType1 return value is " + s);
+}
+```
+
+| Cell  | Formula                           | Result 
+| ----- | ----------------------------------| ------ 
+| A1    | =NativeVersion2("4.3.2.1")        | The Native Version value with field count 2 is 4.3
+| A2    | =NativeReturnTestType1("world")   | The Native TestType1 return value is world
+
 # Not supported functionality in native add-ins
 
 Loading images for ribbon controls.
