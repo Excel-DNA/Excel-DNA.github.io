@@ -13,7 +13,6 @@ When using early preview package sets (from NuGet.org or another trusted feed), 
 - Align all `ExcelDna.*` package versions across `ExcelDna.AddIn`, `ExcelDna.Integration`, and `ExcelDna.AddIn.NativeAOT` so they come from the same preview train.
 - The generated build output for NativeAOT variants is typically under a RID-specific path (for example `bin\\<Config>\\<TFM>\\win-x64\\...`) rather than the managed default output path.
 - In preview or custom source setups, `ExcelDnaToolsPath` may need to be set explicitly to ensure the correct `ExcelDna.xll` tooling is used.
-- For automated test setups that reflect-load both managed and NativeAOT assemblies in-process, test harnesses should isolate the loads (for example with `AssemblyLoadContext`) because both outputs are often named the same.
 
 Publishing the following **MyAddin.csproj** C# project produces native 64-bit **MyAddin-AddIn64.xll** Excel add-in:
 
@@ -21,7 +20,7 @@ Publishing the following **MyAddin.csproj** C# project produces native 64-bit **
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
