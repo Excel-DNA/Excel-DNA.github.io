@@ -2,9 +2,23 @@
 title: ".NET Native AOT support"
 ---
 
-Excel-DNA can produce native 64-bit Excel add-ins, that can run on machines that don't have the .NET runtime installed, using .NET 8.0 
+Excel-DNA can produce native 64-bit Excel add-ins, that can run on machines that don't have the .NET runtime installed, using .NET 8.0 (or later)
 [Native AOT](https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/)
 deployment and **ExcelDna.AddIn.NativeAOT** package.
+
+## Notes for .NET 10 / preview package users
+
+When using early preview package sets (from NuGet.org or another trusted feed), keep these points in mind:
+
+- Align all `ExcelDna.*` package versions across `ExcelDna.AddIn`, `ExcelDna.Integration`, and `ExcelDna.AddIn.NativeAOT` so they come from the same preview train.
+- The generated build output for NativeAOT variants is typically under a RID-specific path (for example `bin\\<Config>\\<TFM>\\win-x64\\...`) rather than the managed default output path.
+- In preview or custom source setups, if you see a build error like `File does not exist (Xll32FilePath): ... ExcelDna.xll`, you can explicitly point `ExcelDnaToolsPath` at the `ExcelDna.AddIn` package tools folder:
+
+```xml
+<PropertyGroup>
+  <ExcelDnaToolsPath>$(PkgExcelDna_AddIn)\\tools\\</ExcelDnaToolsPath>
+</PropertyGroup>
+```
 
 Publishing the following **MyAddin.csproj** C# project produces native 64-bit **MyAddin-AddIn64.xll** Excel add-in:
 
@@ -12,7 +26,7 @@ Publishing the following **MyAddin.csproj** C# project produces native 64-bit **
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
@@ -21,7 +35,7 @@ Publishing the following **MyAddin.csproj** C# project produces native 64-bit **
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ExcelDna.AddIn.NativeAOT" Version="0.1.0" />
+    <PackageReference Include="ExcelDna.AddIn.NativeAOT" Version="1.10.0-preview1" />
   </ItemGroup>
 
 </Project>
