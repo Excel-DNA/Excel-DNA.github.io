@@ -2,7 +2,7 @@
 title: ".NET Native AOT support"
 ---
 
-Excel-DNA can produce native 64-bit Excel add-ins, that can run on machines that don't have the .NET runtime installed, using .NET 8.0 
+Excel-DNA can produce native 64-bit Excel add-ins, that can run on machines that don't have the .NET runtime installed, using .NET 8.0 (or later)
 [Native AOT](https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/)
 deployment and **ExcelDna.AddIn.NativeAOT** package.
 
