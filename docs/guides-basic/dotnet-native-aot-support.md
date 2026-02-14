@@ -12,7 +12,13 @@ When using early preview package sets (from NuGet.org or another trusted feed), 
 
 - Align all `ExcelDna.*` package versions across `ExcelDna.AddIn`, `ExcelDna.Integration`, and `ExcelDna.AddIn.NativeAOT` so they come from the same preview train.
 - The generated build output for NativeAOT variants is typically under a RID-specific path (for example `bin\\<Config>\\<TFM>\\win-x64\\...`) rather than the managed default output path.
-- In preview or custom source setups, `ExcelDnaToolsPath` may need to be set explicitly to ensure the correct `ExcelDna.xll` tooling is used.
+- In preview or custom source setups, if you see a build error like `File does not exist (Xll32FilePath): ... ExcelDna.xll`, you can explicitly point `ExcelDnaToolsPath` at the `ExcelDna.AddIn` package tools folder:
+
+```xml
+<PropertyGroup>
+  <ExcelDnaToolsPath>$(PkgExcelDna_AddIn)\\tools\\</ExcelDnaToolsPath>
+</PropertyGroup>
+```
 
 Publishing the following **MyAddin.csproj** C# project produces native 64-bit **MyAddin-AddIn64.xll** Excel add-in:
 
