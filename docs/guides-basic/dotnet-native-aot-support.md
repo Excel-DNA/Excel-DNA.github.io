@@ -8,7 +8,7 @@ deployment and **ExcelDna.AddIn.NativeAOT** package.
 
 ## Notes for .NET 10 / preview package users
 
-When using early preview package sets, keep these points in mind:
+When using early preview package sets (from NuGet.org or another trusted feed), keep these points in mind:
 
 - Align all `ExcelDna.*` package versions across `ExcelDna.AddIn`, `ExcelDna.Integration`, and `ExcelDna.AddIn.NativeAOT` so they come from the same preview train.
 - The generated build output for NativeAOT variants is typically under a RID-specific path (for example `bin\\<Config>\\<TFM>\\win-x64\\...`) rather than the managed default output path.
