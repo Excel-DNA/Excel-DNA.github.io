@@ -212,13 +212,6 @@ export default function HomepageFeatures() {
           </p>
           <p>&nbsp;</p>
           <p>
-            <a href="http://www.janestcapitcal.com" target="_blank" rel="noopener noreferrer">
-            <img loading="lazy" class="float-image img_node_modules-@docusaurus-theme-classic-lib-theme-MDXComponents-Img-styles-module" src="img/jane-street-logo.png" /></a>
-            <br />
-            <a href="http://www.janestcapital.com/" target="_blank" rel="noopener noreferrer">Jane Street</a> uses Excel-DNA.
-          </p>
-          <p>&nbsp;</p>
-          <p>
             <a href="http://eqfltd.com" target="_blank" rel="noopener noreferrer">
             <img loading="lazy" class="float-image img_node_modules-@docusaurus-theme-classic-lib-theme-MDXComponents-Img-styles-module" src="img/eq_logo.png" /></a>
             <br />
@@ -257,3 +250,4 @@ export default function HomepageFeatures() {
     </section>
   );
 }
+
