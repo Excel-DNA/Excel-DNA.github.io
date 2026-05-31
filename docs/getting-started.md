@@ -6,23 +6,23 @@ title: "Getting Started"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The easiest way to make an Excel-DNA addin is to create to follow these simple steps:
+The easiest way to make an Excel-DNA addin is to follow these simple steps:
 
 ### Create a Project in Visual Studio
 
 1. Select **Create a new project** and then select **Class Library** in either Visual Basic, C# or F#.
 2. Enter a name for the project.
-3. Under Framework, select the **.NET 6.0 (Long-term support)** option.
+3. Under Framework, select the **.NET 10.0 (Long Term support)** option.
 
 ### Write the Addin Code
 
-1. Depending on the language of choice, in the .csproj, .vbproj, or .fsproj file, change the value between the *TargetFramework* tags to **net6.0-windows**.
+1. Depending on the language of choice, in the .csproj, .vbproj, or .fsproj file, change the value between the *TargetFramework* tags to **net10.0-windows**.
 
 2. Add the following under </PropertyGroup\>:
 
    ```xml
    <ItemGroup>
-       <PackageReference Include="ExcelDna.Addin" Version="1.7.0"/>
+       <PackageReference Include="ExcelDna.Addin" Version="1.9.0"/>
    </ItemGroup>
    ```
    
@@ -60,7 +60,7 @@ The easiest way to make an Excel-DNA addin is to create to follow these simple s
     <TabItem value="fsharp" label="F#">
 
     ```fsharp
-    module MyFunctions = 
+    module MyFunctions
         open ExcelDna.Integration
    
         [<ExcelFunction(Description = "My first .NET function")>]
@@ -92,13 +92,14 @@ It is possible to debug the solution through Visual Studio. To do so, follow the
 2. Create a breakpoint by selecting **Toggle Breakpoint**, under the **Debug** menu item at the top menu bar. Alternatively, press F9. The line of code would be highlighted in red.
 3. In Excel, use the function that is needed to be debugged. The execution of the function will be caught by Visual Studio at the breakpoint. The line of code would be highlighted in yellow.
 4. In Visual Studio, inspect the code and change it as required. Once done, select **Continue**, under the **Debug** menu item at the top bar. Alternatively, press F5.
-5. Finally, see the new results reflect in Excel upon completion of execution of the debugged function.
+5. Without a breakpoint, change the code as required and select **Apply Code Changes**. Alternatively, press Alt+F10.
+6. Finally, see the new results reflect in Excel upon completion of execution of the debugged function.
 
 ### Distribution
 
-In order to use the newly created add-in, users would require the .NET 6 runtime to be installed. Additionally, the correct architecture (32bit or 64bit) of the installation should be taken into consideration.
+In order to use the newly created add-in, users would require the .NET 10 Desktop Runtime to be installed. Additionally, the correct architecture (32bit or 64bit) of the installation should be taken into consideration.
 
-### Transitioning to .NET 6
+### Transitioning to .NET (Core)
 
-In recent years, Microsoft has moved from the older .NET Framework to the newer, cross-platform .NET 6. The transition brings new features, better performance, and a simpler project format. For more details, see [.NET Framework vs. .NET 6](../../../dotnet_framework_vs_dotnet6) and the walkthrough guide [Updating Project File to SDK-style](./guides-basic/updating-project-file-to-sdk-style).
+In recent years, Microsoft has moved from the older .NET Framework to the newer, cross-platform .NET (Core). The transition brings new features, better performance, and a simpler project format. For more details, see [.NET Framework vs. .NET 6](../../../dotnet_framework_vs_dotnet6) and the walkthrough guide [Updating Project File to SDK-style](./guides-basic/updating-project-file-to-sdk-style).
 
