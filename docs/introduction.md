@@ -213,7 +213,7 @@ The Excel-DNA Runtime is free for all use, and distributed under a permissive op
 Originally, the project was hosted on [https://exceldna.codeplex.com](https://exceldna.codeplex.com), where you can still download the site in it's historic state as a package. After CodePlex' shutdown the archive site is however mostly unusable by now.
 
 ## Latest Releases
-The current version on NuGet is [Excel-DNA Latest], released in Novemver 2025.
+The current version on NuGet is [Excel-DNA Latest], released in November 2025.
 
 [Excel-DNA Latest]: https://github.com/Excel-DNA/ExcelDna/releases/latest
 [Excel-DNA v1.1]: https://excel-dna.net/2020/06/29/excel-dna-version-1-1/
