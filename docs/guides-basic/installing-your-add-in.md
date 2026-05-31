@@ -7,7 +7,7 @@ The issue addressed here is how to install your add-in into Excel, so that it wi
 
 ## .NET Runtime
 
-Excel-DNA supports add-in projects that target .NET Framework 4.x and/or .NET 6. When targeting .NET 6 the end-user must have the [.NET 6 Desktop runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) installed.
+Excel-DNA supports add-in projects that target .NET Framework 4.x and/or .NET (Core) 6+. When targeting .NET (Core) the end-user must have the [.NET Desktop runtime](https://dotnet.microsoft.com/en-us/download/dotnet/) installed.
 
 ## Packing
 

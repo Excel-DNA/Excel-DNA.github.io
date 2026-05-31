@@ -133,17 +133,13 @@ As part of the build, if no .dna file is present in the project, the required .d
     <!-- Default value: $(TargetFileName) -->
     <ExcelAddInExternalLibraryPath></ExcelAddInExternalLibraryPath>
 
-    <!-- Enable/disable including pdb files in packed add-in. -->
-    <!-- Default value: false -->
-    <ExcelAddInIncludePdb></ExcelAddInIncludePdb>
-
-    <!-- Control whether the add-in's assemblies are loaded directly from byte arrays under .NET Framework. -->
-    <!-- Default value: true -->
-    <ExcelAddInLoadFromBytes></ExcelAddInLoadFromBytes>
-
     <!-- Enable/disable collectible AssemblyLoadContext for .NET 6. -->
     <!-- Default value: false -->
     <ExcelAddInDisableAssemblyContextUnload></ExcelAddInDisableAssemblyContextUnload>
+
+    <!-- Enable/disable using the project's output runtimeconfig.json file for .NET 6. -->
+    <!-- Default value: false -->
+    <ExcelAddInCustomRuntimeConfiguration></ExcelAddInCustomRuntimeConfiguration>
 
     <!-- Path to TlbExp.exe. E.g. "c:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64\TlbExp.exe" or $(MSBuildProjectDirectory)\TlbExp.exe.-->
     <!-- Default value: empty -->
@@ -177,11 +173,25 @@ As part of the build, if no .dna file is present in the project, the required .d
     <!-- Default value: false -->
     <ExcelAddInComServer></ExcelAddInComServer>
 
+    <!-- Enable/disable more dynamic .dll loading. -->
+    <!-- Default value: true -->
+    <ExcelAddInLoadFromBytes></ExcelAddInLoadFromBytes>
+
+    <!-- Enable/disable including pdb files in packed add-in. -->
+    <!-- Default value: false -->
+    <ExcelAddInIncludePdb></ExcelAddInIncludePdb>
+
     <!-- We don't need the extra 'ref' directory and reference assemblies for the Excel add-in -->
     <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
 
     <!-- We need all dependencies to be copied to the output directory, as-if we are an 'application' and not a 'library'. This property also sets the CopyLockFileAssemblies property to true. -->
     <EnableDynamicLoading>true</EnableDynamicLoading>
+
+    <!-- Controls how the add-in chooses a runtime when multiple runtime versions are available. -->
+    <RollForward></RollForward>
+
+    <!-- Specifies the version of the runtime to use. -->
+    <RuntimeFrameworkVersion></RuntimeFrameworkVersion>
     
   </PropertyGroup>
 

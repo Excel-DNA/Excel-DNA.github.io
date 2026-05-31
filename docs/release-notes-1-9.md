@@ -1,7 +1,5 @@
 # Excel-DNA Release Notes - v1.9.0
 
-**Released:** _Soon..._ [v1.9.0-rc3 is now available on NuGet](https://www.nuget.org/packages/ExcelDna.AddIn).
-
 This document provides an overview of the new features and enhancements in Excel-DNA version 1.9.0. This release significantly refactors and extends function registration, including simplified support for optional / default parameters and asynchronous functions, and introduces built-in support for object handles.
 
 ## Support and Sponsors
@@ -391,14 +389,14 @@ The sample project RtdClock-Watchdog (in the Excel-DNA\Samples repository) shows
 ## Other Changes and Enhancements
 
 ### Support for newer .NET Versions
-* With this release we extend support to .NET 9 (and preliminary support for .NET 10)
+* With this release we extend support to .NET 10.
 
 ### Help File Packaging
 * Added support for packing compiled HTML Help (`.chm`) files into the packed add-in (`.xll`).
 
 ### RuntimeFrameworkVersion Support
 
-We now support specifying an exact runtime version (for .NET 5+) by honoring the `RuntimeFrameworkVersion` project property.
+We now support specifying an exact runtime version (for .NET 6+) by honoring the `RuntimeFrameworkVersion` project property.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">

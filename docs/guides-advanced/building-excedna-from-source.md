@@ -4,9 +4,9 @@ title: "Building Excel-DNA From Source"
 
 To build Excel-DNA from source, create a single <root\> directory first.  
 
-Build Requirement: Visual Studio 2022 Community or Professional with C++ and .NET Desktop development support, set the path to MSBuild.exe in <root\>\ExcelDna\MasterBuild\MasterBuild.cmd:  
+Build Requirement: Visual Studio 2026 Community or Professional with C++ and .NET Desktop development support, set the path to MSBuild.exe in <root\>\ExcelDna\MasterBuild\MasterBuild.cmd:  
 
-`set MSBuildPath="C:\Program Files\Microsoft Visual Studio\2022\Community\Msbuild\Current\Bin\amd64\MSBuild.exe"`
+`set MSBuildPath="c:\Program Files\Microsoft Visual Studio\18\Insiders\Msbuild\Current\Bin\amd64\MSBuild.exe"`
 
 You have to clone the following repositories into the <root\> directory:
 

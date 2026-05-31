@@ -7,9 +7,9 @@ Excel-DNA continues to support .NET Framework 4.x. For the core add-in libraries
 <TargetFramework>net472</TargetFramework>
 ```
 
-Targeting .NET core runtimes, .NET 6 (v6.0.2+) to .NET 8 is also supported. This requires the ".NET Desktop Runtime" to be installed, with the platform (x64 or x86) matching the Excel installation (64-bit or 32-bit respectively).
+Targeting .NET core runtimes, .NET 6 (v6.0.2+) to .NET 10 is also supported. This requires the ".NET Desktop Runtime" to be installed, with the platform (x64 or x86) matching the Excel installation (64-bit or 32-bit respectively).
 ```
-<TargetFramework>net8.0-windows</TargetFramework>
+<TargetFramework>net10.0-windows</TargetFramework>
 ```
 
 Only a single .NET core runtime can be loaded into an Excel process (this one .NET core runtime can be loaded together with the .NET Framework 4.x runtime). For an add-in developer, this means the choice of runtime can impact, and be impacted, by other add-ins targeting .NET core versions.
@@ -30,7 +30,7 @@ Here are some of the pros and cons for which runtime flavour to target
 * Supports newest C# language and runtime features.
 * Need to install the .NET Desktop Runtime for the version you target.
 * New 'major' runtime version every year, installed side-by-side with no compatibility guarantees.
-* Alternating 'Long Term Support' (3 years, e.g. .NET 8.0) and 'Standard Term Support' (18 months, e.g. .NET 7.0) releases.
+* Alternating 'Long Term Support' (3 years, e.g. .NET 10.0) and 'Standard Term Support' (2 years, e.g. .NET 9.0) releases.
 * Add-ins targeting different .NET Core runtime versions cannot be loaded together (but can load alongside .NET Framework add-ins).
 * Weak add-in isolation - no AppDomains so add-ins can interfere more easily.
 

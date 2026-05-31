@@ -16,9 +16,9 @@ Excel-DNA is an independent project to integrate .NET into Excel. We hope it wil
 
 The Excel-DNA Runtime is free for all use, and distributed under a permissive open-source license that also allows commercial use.
 
-Excel-DNA is developed using .NET, and users have to install the freely available .NET Framework runtime. The integration is by an Excel Add-In (.xll) that exposes .NET code to Excel. The user code can be in text-based (.dna) script files (C#, Visual Basic or F#), or compiled .NET libraries (.dll). Excel-DNA supports both the .NET runtime version 2.0 (which is used by .NET versions 2.0, 3.0 and 3.5) and version 4. Add-ins can target either version of the runtime, and concurrent loading of both runtime versions into an Excel instance is supported.
+Excel-DNA is developed using .NET. The integration is by an Excel Add-In (.xll) that exposes .NET code to Excel. The user code can be in text-based (.dna) script files (C#, Visual Basic or F#), or compiled .NET libraries (.dll). Excel-DNA supports .NET Framework 4, .NET (Core) 6-10, Native AOT. Add-ins can target either version of the runtime, and concurrent loading of runtime versions into an Excel instance is supported.
 
-Excel versions '97 through 2016 can be targeted with a single add-in. Advanced Excel features are supported, including multi-threaded recalculation (Excel 2007 and later), registration-free RTD servers (Excel 2002 and later) and customized Ribbon interfaces (Excel 2007 and 2010). There is support for integrated Custom Task Panes (Excel 2007 and later), offloading UDF computations to a Windows HPC cluster (Excel 2010 and later), and for the 64-bit versions of Excel 2010 and 2013.
+Excel versions '97 through 2024 and 365 can be targeted with a single add-in. Advanced Excel features are supported, including multi-threaded recalculation (Excel 2007 and later), registration-free RTD servers (Excel 2002 and later) and customized Ribbon interfaces (Excel 2007 and later). There is support for integrated Custom Task Panes (Excel 2007 and later), offloading UDF computations to a Windows HPC cluster (Excel 2010 and later), and for the 64-bit versions of Excel 2010 and later.
 
 Most managed UDF assemblies developed for Excel Services can be exposed to the Excel client with no modification. (Please contact us if you are interested in this feature)
 
@@ -204,10 +204,6 @@ And if you could help put together some proper documentation, please contact me.
 Information about the performance of Excel-DNA user-defined functions can be found on the [Excel-DNA Performance](archive/exceldna-performance) page.
 
 ## More Details
-Excel-DNA is developed using .NET, and users have to install the freely available .NET Framework runtime. The integration is by an Excel Add-In (.xll) that exposes .NET code to Excel. The user code can be in text-based (.dna) script files (C#, Visual Basic or F#), or compiled .NET libraries (.dll). Excel-DNA supports both the .NET runtime version 2.0 (which is used by .NET versions 2.0, 3.0 and 3.5) and version 4. Add-ins can target either version of the runtime, and concurrent loading of both runtime versions into an Excel instance is supported.
-
-Excel versions '97 through 2016 can be targeted with a single add-in. Advanced Excel features are supported, including multi-threaded recalculation (Excel 2007 and later), registration-free RTD servers (Excel 2002 and later) and customized Ribbon interfaces (Excel 2007 and 2010). There is support for integrated Custom Task Panes (Excel 2007 and later), offloading UDF computations to a Windows HPC cluster (Excel 2010 and later), and for the 64-bit versions of Excel 2010 and 2013.
-
 Most managed UDF assemblies developed for Excel Services can be exposed to the Excel client with no modification. (Please contact me if you are interested in this feature.)
 
 Since Excel-DNA uses the Excel C API, porting C/C++ add-in code based on the Excel XLL SDK is very easy. (No more `XLOPER`s!)
@@ -217,9 +213,9 @@ The Excel-DNA Runtime is free for all use, and distributed under a permissive op
 Originally, the project was hosted on [https://exceldna.codeplex.com](https://exceldna.codeplex.com), where you can still download the site in it's historic state as a package. After CodePlex' shutdown the archive site is however mostly unusable by now.
 
 ## Latest Releases
-The current version on NuGet is [Excel-DNA Latest], released in October 2022.
+The current version on NuGet is [Excel-DNA Latest], released in November 2025.
 
-[Excel-DNA Latest]: /blog/2022/03/07/excel-dna-1.6-.net6-packagereference-anti-virus
+[Excel-DNA Latest]: https://github.com/Excel-DNA/ExcelDna/releases/latest
 [Excel-DNA v1.1]: https://excel-dna.net/2020/06/29/excel-dna-version-1-1/
 [paypal-link]: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=92N99RV5NQ29C&amp;lc=US&amp;item_name=Govert%20van%20Drimmelen&amp;item_number=ExcelDna&amp;currency_code=USD&amp;bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted
 [paypal-image]: https://www.paypal.com/en_GB/i/btn/btn_donateCC_LG.gif "Donate via PayPal"
