@@ -95,7 +95,7 @@ export default function HomepageFeatures() {
           <ol>
             <li>Select <b>Create a new project</b> and then select <b>Class Library</b> in either Visual Basic, C# or F#.</li>
             <li>Enter a name for the project.</li>
-            <li> Under Framework, select the <b>.NET 6.0 (Long-term support)</b> option.</li>
+            <li> Under Framework, select the <b>.NET 10.0 (Long Term Support)</b> option.</li>
             <br />
             <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/6fY2JtXebsU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
           </ol>
