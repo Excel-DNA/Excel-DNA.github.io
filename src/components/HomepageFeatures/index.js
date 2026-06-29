@@ -101,7 +101,7 @@ export default function HomepageFeatures() {
           </ol>
           <h3>Write the Addin Code</h3>
           <ol> 
-            <li>Depending on the language of choice, in the .csproj, .vbproj, or .fsproj file, change the value between the <i>TargetFramework</i> tags to <b>net6.0-windows</b>.</li>
+            <li>Depending on the language of choice, in the .csproj, .vbproj, or .fsproj file, change the value between the <i>TargetFramework</i> tags to <b>net10.0-windows</b>.</li>
             <li>Add the following under <i>&lt;/PropertyGroup></i>:
             <pre>&lt;ItemGroup&gt;<br />
 		             &nbsp;&nbsp;&nbsp;&nbsp;&lt;PackageReference Include="ExcelDna.Addin" Version="*-*"/&gt;<br />
