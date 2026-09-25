@@ -42,6 +42,23 @@ Create a new `CustomTaskPane` containing an instance of `MyUserControl` by calli
 var myCTP = CustomTaskPaneFactory.CreateCustomTaskPane(typeof(MyUserControl), myTitle);
 ```
 
+**.NET 6 and later:** the `UserControl` needs an explicit COM default interface. .NET Framework generates a class interface automatically, so a COM-visible `UserControl` implements `IDispatch` without any extra declarations. .NET 6 and later do not generate a class interface, and `CreateCustomTaskPane` then fails with `E_FAIL` (`0x80004005`) or "Unable to create specified ActiveX control". Declare an interface (it can be empty) and mark it as the default interface of the control:
+
+```csharp
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+
+public interface IMyUserControl { }
+
+[ComVisible(true)]
+[ComDefaultInterface(typeof(IMyUserControl))]
+public class MyUserControl : UserControl, IMyUserControl
+{
+}
+```
+
+The [CustomTaskPane sample](https://github.com/Excel-DNA/Samples/tree/master/CustomTaskPane) uses this pattern and targets both .NET Framework and .NET 6.
+
 ## COM Server support
 
 COM visible classes in ExternalLibrary tags marked `ComServer="true"`, and COM visible classes that implement `IRtdServer` can be activated through the .xll directly. Even if the add-in is not loaded in Excel, such objects can be created in VBA.
